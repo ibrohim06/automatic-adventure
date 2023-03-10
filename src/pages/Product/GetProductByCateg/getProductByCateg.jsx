@@ -5,20 +5,19 @@ import {
   //   useEditData,
   //   useDeleteData,
 } from "../../../axios/hooks";
+import PostProduct from "../PostProduct/postProduct";
 
 export default function GetProductByCateg() {
   const {
     data: products,
     isLoading,
     isError,
-  } = useGetData(
-    ["products"],
-    "/products/category/016fc031-2174-4cac-a6fd-98a29d141745"
-  );
-  console.log();
-  products?.data?.map((e) => {
-    console.log(e.Category.id);
-  });
+  } = useGetData(["products"], "/products/category");
+  // /b694e7b3-3a0a-485a-b0c7-13b7ad9933f3
+  console.log(products);
+  // products?.data?.map((e) => {
+  //   console.log(e);
+  // });
 
   if (isLoading) {
     return <p>isLoading</p>;

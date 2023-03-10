@@ -10,7 +10,7 @@ form {
   margin: 0 auto;
 }
 
-h1 {
+h5 {
   font-weight: 100;
   color: white;
   text-align: center;
@@ -24,11 +24,11 @@ h1 {
   margin: 0 auto;
 }
 
-p {
+h6 {
   color: #bf1650;
 }
 
-p::before {
+h6::before {
   display: inline;
   content: "⚠ ";
 }
@@ -45,7 +45,7 @@ form input {
   gap: 30px;
 }
 .form-flex input,
-p {
+h6 {
   width: 100%;
 }
 input {
@@ -112,7 +112,7 @@ input[type="submit"] {
 }
 
 .App {
-  max-width: 600px;
+  /* max-width: 600px; */
   margin: 0 auto;
 }
 
@@ -140,4 +140,11 @@ button {
   text-transform: uppercase;
   padding: 10px 20px;
   border-radius: 4px;
+}
+
+.modal button {
+  display: none;
+}
+.modal div {
+  font-size: 19px;
 }

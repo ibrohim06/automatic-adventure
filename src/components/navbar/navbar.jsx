@@ -1,20 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import s from "./navbar.module.scss";
 
 export default function Navbar() {
   return (
-    <div>
+    <div className={s.flex}>
       <NavLink to={"/allusers"}>All Users</NavLink>
       <br />
-      <NavLink to={"/allproduct"}>All Products</NavLink>
+      <NavLink to={"/allproduct"}>Products</NavLink>
       <br />
-      <NavLink to={"/postproduct"}>post Product</NavLink>
-      <br />
-      <NavLink to={"/editproduct"}>edit Product</NavLink>
-      <br />
-      <NavLink to={"/deleteproduct"}>delelte product</NavLink>
-      <br />
-      <NavLink to={"/productcateg"}> product categ id</NavLink>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css";
+import css from "./style.css";
 import {
   //   useGetData,
   usePostData,
@@ -10,10 +10,11 @@ import { Button, Modal } from "antd";
 import { useState } from "react";
 import "antd/dist/reset.css";
 import { useForm } from "react-hook-form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function PostProduct() {
   const post = usePostData("/products");
-  const [nm, setNm] = useState();
   const {
     register,
     handleSubmit,
@@ -26,35 +27,29 @@ export default function PostProduct() {
       price: Number(data.price),
       discount: Number(data.discount),
     });
-  // console.log(errors);
 
   const postData = (data) => {
-    console.log({
-      ...data,
-      price: Number(data.price),
-    });
-    console.log(data);
-
     post.mutate(data, {
-      onSuccess: (post) => console.log(post, "data"),
+      onSuccess: (post) => alert("sucsess, your product saved"),
       onError: (error) => console.log(error, "error"),
     });
   };
 
-  //   if (isLoading) {
-  //     return <p>isLoading</p>;
-  //   }
-  //   if (isError) {
-  //     return <p>error check your internet</p>;
-  //   }
+  // if (isLoading) {
+  //   return <p>isLoading</p>;
+  // }
+  // if (isError) {
+  //   return <p>error check your internet</p>;
+  // }
   const [open, setOpen] = useState(false);
   return (
-    <div>
+    <div id="form">
       <>
         <Button type="primary" onClick={() => setOpen(true)}>
-          Create post
+          <FontAwesomeIcon icon={faPlus} />
         </Button>
         <Modal
+          className="modal"
           title="Create post"
           centered
           open={open}
@@ -76,21 +71,21 @@ export default function PostProduct() {
                 <input
                   {...register("gender")}
                   type="radio"
-                  value="Both"
+                  value="BOTH"
                   placeholder="gender"
                 />
                 <h4>Male</h4>
                 <input
                   {...register("gender")}
                   type="radio"
-                  value=" Men"
+                  value="MALE"
                   placeholder="gender"
                 />
                 <h4>Famale</h4>
                 <input
                   {...register("gender")}
                   type="radio"
-                  value=" Woman"
+                  value="FEMALE"
                   placeholder="gender"
                 />
               </div>
@@ -149,7 +144,7 @@ export default function PostProduct() {
                 placeholder="Photo_id"
                 {...register("photoId", {})}
               />
-              <input type="submit" />
+              <input type="submit" onClick={() => setOpen(false)} />
             </form>
           </>
         </Modal>
